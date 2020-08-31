@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-
+import { useStateValue } from './StateProvider';
 import {
 	StyledDiv,
 	StyledHeaderNav,
@@ -18,6 +18,8 @@ import {
 } from './styles';
 
 function Header () {
+	const [ { basket } ] = useStateValue();
+
 	return (
 		<StyledNav className="header">
 			<Link to="/">
@@ -52,7 +54,7 @@ function Header () {
 				<HeaderLink to="/checkout" className="header__link">
 					<HeaderBasket className="header__optionBasket">
 						<ShoppingBasketIcon />
-						<HeaderBasketCount>0</HeaderBasketCount>
+						<HeaderBasketCount>{basket.length}</HeaderBasketCount>
 					</HeaderBasket>
 				</HeaderLink>
 			</StyledHeaderNav>

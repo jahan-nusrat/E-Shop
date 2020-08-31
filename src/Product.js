@@ -1,5 +1,4 @@
 import React from 'react';
-import StarIcon from '@material-ui/icons/Star';
 import { ProductInfo, StyledProduct, ProductPrice, ProductButton, ProductImg, ProductIcon } from './productStyle';
 
 function Product ({ id, title, image, price, rating }) {
