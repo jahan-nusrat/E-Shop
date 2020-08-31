@@ -1,34 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
-import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 
-const StyledImg = styled.img`
-	width: 100px;
-	margin: 18px 20px 0;
-	object-fit: contain;
-`;
-const StyledNav = styled.nav`
-	background-color: #131921;
-	display: flex;
-	align-items: center;
-`;
-const StyledIcon = styled(SearchIcon)`
-    background-color:#cd9042;
-    padding:5px;
-    height: 22px !important;
-`;
-const StyledDiv = styled.div`
-	display: flex;
-	flex: 1;
-`;
-const StyledInput = styled.input`
-	height: 12px;
-	padding: 10px;
-	border: none;
-	width: 100%;
-`;
-const StyledHeaderNav = styled.div`display: flex;`;
+import {
+	StyledDiv,
+	StyledHeaderNav,
+	StyledIcon,
+	StyledImg,
+	StyledInput,
+	StyledNav,
+	HeaderLink,
+	HeaderOption,
+	HeaderOptionOne,
+	HeaderOptionTwo,
+	HeaderBasket,
+	HeaderBasketCount
+} from './styles';
 
 function Header () {
 	return (
@@ -41,27 +28,33 @@ function Header () {
 				<StyledIcon className="header__searchIcon" />
 			</StyledDiv>
 			<StyledHeaderNav className="header__nav">
-				{/* link 1 */}
-				<Link to="/login" className="header__link">
-					<div className="header__option">
-						<span>Hello</span>
-						<span>Sign In</span>
-					</div>
-				</Link>
-				{/* link 2 */}
-				<Link to="/login" className="header__link">
-					<div className="header__option">
-						<span>Returns</span>
-						<span>& Orders</span>
-					</div>
-				</Link>
-				{/* link 3 */}
-				<Link to="/login" className="header__link">
-					<div className="header__option">
-						<span>Your</span>
-						<span>Prime</span>
-					</div>
-				</Link>
+				<HeaderLink to="/login" className="header__link">
+					<HeaderOption className="header__option">
+						<HeaderOptionOne className="header__optionOne">Hello</HeaderOptionOne>
+						<HeaderOptionTwo className="header__optionTwo">Sign In</HeaderOptionTwo>
+					</HeaderOption>
+				</HeaderLink>
+
+				<HeaderLink to="/" className="header__link">
+					<HeaderOption className="header__option">
+						<HeaderOptionOne className="header__optionOne">Returns</HeaderOptionOne>
+						<HeaderOptionTwo className="header__optionTwo">& Orders</HeaderOptionTwo>
+					</HeaderOption>
+				</HeaderLink>
+
+				<HeaderLink to="/" className="header__link">
+					<HeaderOption className="header__option">
+						<HeaderOptionOne className="header__optionOne">Your</HeaderOptionOne>
+						<HeaderOptionTwo className="header__optionTwo">Prime</HeaderOptionTwo>
+					</HeaderOption>
+				</HeaderLink>
+
+				<HeaderLink to="/checkout" className="header__link">
+					<HeaderBasket className="header__optionBasket">
+						<ShoppingBasketIcon />
+						<HeaderBasketCount>0</HeaderBasketCount>
+					</HeaderBasket>
+				</HeaderLink>
 			</StyledHeaderNav>
 		</StyledNav>
 	);
