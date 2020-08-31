@@ -19,7 +19,7 @@ import {
 
 function Header () {
 	const [ { basket } ] = useStateValue();
-console.log(basket)
+	console.log(basket);
 	return (
 		<StyledNav className="header">
 			<Link to="/">
@@ -54,7 +54,7 @@ console.log(basket)
 				<HeaderLink to="/checkout" className="header__link">
 					<HeaderBasket className="header__optionBasket">
 						<ShoppingBasketIcon />
-						<HeaderBasketCount>{basket?.length}</HeaderBasketCount>
+						<HeaderBasketCount>{basket.length}</HeaderBasketCount>
 					</HeaderBasket>
 				</HeaderLink>
 			</StyledHeaderNav>
