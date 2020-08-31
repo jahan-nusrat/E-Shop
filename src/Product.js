@@ -1,24 +1,24 @@
 import React from 'react';
 import StarIcon from '@material-ui/icons/Star';
-import { StyledProduct } from './productStyle';
+import { ProductInfo, StyledProduct, ProductPrice, ProductButton, ProductImg, ProductIcon } from './productStyle';
 
 function Product ({ id, title, image, price, rating }) {
 	return (
 		<StyledProduct className="product">
-			<div className="product__info">
+			<ProductInfo className="product__info">
 				<p>{title}</p>
-				<p className="product__price">
+				<ProductPrice className="product__price">
 					<small>$</small>
 					<strong>{price}</strong>
-				</p>
+				</ProductPrice>
 				<div className="product__rating">
-					{Array(rating).fill(<StarIcon />).map((star) => {
+					{Array(rating).fill(<ProductIcon />).map((star) => {
 						return star;
 					})}
 				</div>
-			</div>
-
-			<button>add to basket</button>
+			</ProductInfo>
+			<ProductImg src={image} alt="" />
+			<ProductButton>add to basket</ProductButton>
 		</StyledProduct>
 	);
 }
