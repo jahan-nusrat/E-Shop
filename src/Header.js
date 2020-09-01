@@ -19,7 +19,6 @@ import {
 
 function Header () {
 	const [ { basket } ] = useStateValue();
-	console.log(basket);
 	return (
 		<StyledNav className="header">
 			<Link to="/">
