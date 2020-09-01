@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { StateProvider } from './StateProvider';
 import reducer, { initialState } from './reducer';
+import { createGlobalStyle } from 'styled-components';
 
 ReactDOM.render(
 	<StateProvider initialState={initialState} reducer={reducer}>

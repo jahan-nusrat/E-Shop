@@ -9,10 +9,9 @@ export const CheckoutAd = styled.img`
 
 export const CheckProduct = styled.div`
 	display: flex;
-	background-color: #ffffff;
 	padding: 1rem;
 	align-items: center;
-	margin-bottom: 0.8rem;
+	margin: 0.8rem 0;
 `;
 export const CheckImage = styled.img`height: 160px;`;
 export const CheckoutInfo = styled.div`padding-left: 1rem;`;
@@ -29,4 +28,16 @@ export const CheckoutTitle = styled.p`
 `;
 export const ProductIcon = styled(StarIcon)`
 color:#EA912C;
+`;
+
+export const CheckoutDiv = styled.div`
+	display: flex;
+	padding: 20px;
+	background-color: #ffffff;
+	height: max-content;
+`;
+
+export const CheckTitle = styled.h2`
+	border-bottom: 1px solid #bbbbbb;
+	padding: 10px;
 `;
