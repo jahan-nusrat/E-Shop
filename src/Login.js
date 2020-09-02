@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
 	LoginLogo,
 	LoginContainer,
@@ -14,6 +14,7 @@ import {
 import { auth } from './firebase';
 
 function Login () {
+	const hist = useHistory();
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 
@@ -23,6 +24,7 @@ function Login () {
 			.signInWithEmailAndPassword(email, password)
 			.then((auth) => {
 				//logged in..redirect to homepage...
+				hist.push('/');
 			})
 			.catch((data) => alert(data.message));
 	};

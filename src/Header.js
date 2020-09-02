@@ -16,9 +16,16 @@ import {
 	HeaderBasket,
 	HeaderBasketCount
 } from './styles';
+import { auth } from './firebase';
 
 function Header () {
-	const [ { basket } ] = useStateValue();
+	const [ { basket, user } ] = useStateValue();
+	const login = () => {
+		if (user) {
+			auth.signOut();
+		}
+	};
+
 	return (
 		<StyledNav className="header">
 			<Link to="/">
@@ -29,10 +36,10 @@ function Header () {
 				<StyledIcon className="header__searchIcon" />
 			</StyledDiv>
 			<StyledHeaderNav className="header__nav">
-				<HeaderLink to="/login" className="header__link">
-					<HeaderOption className="header__option">
-						<HeaderOptionOne className="header__optionOne">Hello</HeaderOptionOne>
-						<HeaderOptionTwo className="header__optionTwo">Sign In</HeaderOptionTwo>
+				<HeaderLink to={!user && '/login'} className="header__link">
+					<HeaderOption onClick={login} className="header__option">
+						<HeaderOptionOne className="header__optionOne">Hello </HeaderOptionOne>
+						<HeaderOptionTwo className="header__optionTwo">{user ? 'Sign Out' : 'Sign In'}</HeaderOptionTwo>
 					</HeaderOption>
 				</HeaderLink>
 

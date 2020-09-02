@@ -4,8 +4,14 @@ export const initialState = {
 };
 
 const reducer = (state, action) => {
-	console.log(state);
 	switch (action.type) {
+		case 'SET_USER':
+			return {
+				...state,
+				user : action.user
+			};
+			break;
+
 		case 'ADD_TO_BASKET':
 			return {
 				...state,
