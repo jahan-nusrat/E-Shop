@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LoginLogo, LoginContainer, LogIn, LogHead, LoginSecondHead, LoginInput } from './LoginStyle';
+import {
+	LoginLogo,
+	LoginContainer,
+	LogIn,
+	LogHead,
+	LoginSecondHead,
+	LoginInput,
+	LogInPara,
+	SignInBtn,
+	RegisterBtn
+} from './LoginStyle';
+import { auth } from './firebase';
 
 function Login () {
+	const [ email, setEmail ] = useState('');
+	const [ password, setPassword ] = useState('');
+
+	const login = (event) => {
+		event.preventDefault();
+		auth
+			.signInWithEmailAndPassword(email, password)
+			.then((auth) => {
+				//logged in..redirect to homepage...
+			})
+			.catch((data) => alert(data.message));
+	};
+
+	const register = (event) => {
+		event.preventDefault();
+		auth
+			.createUserWithEmailAndPassword(email, password)
+			.then((auth) => {
+				//create a user and logged in and redirect to homepage...
+			})
+			.catch((data) => alert(data.message));
+	};
+
 	return (
 		<LogIn className="login">
 			<Link to="/">
@@ -16,16 +50,22 @@ function Login () {
 				<LogHead>Sign-in</LogHead>
 				<form>
 					<LoginSecondHead>E-mail</LoginSecondHead>
-					<LoginInput type="text" />
+					<LoginInput value={email} onChange={(event) => setEmail(event.target.value)} type="text" />
 					<LoginSecondHead>Password</LoginSecondHead>
-					<LoginInput type="password" />
-					<button>Sign In</button>
+					<LoginInput
+						value={password}
+						onChange={(event) => setPassword(event.target.value)}
+						type="password"
+					/>
+					<SignInBtn onClick={login} type="submit">
+						Sign In
+					</SignInBtn>
 				</form>
-				<p>
+				<LogInPara>
 					By signing-in you agree to Amazon's conditions of Use & Sale. Please see our Privacy Policy, our
 					Cookies Notice and our internet-based Ads Notice.
-				</p>
-				<button>Create your Amazon Account</button>
+				</LogInPara>
+				<RegisterBtn onClick={register}>Create your Amazon Account</RegisterBtn>
 			</LoginContainer>
 		</LogIn>
 	);
