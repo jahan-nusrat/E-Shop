@@ -5,6 +5,7 @@ import { SubtotalDiv, SubtotalGift, SubtotalInput, SubtotalBtn } from './SUbtota
 
 function Subtotal () {
 	const [ { basket }, dispatch ] = useStateValue();
+
 	const getBasketTotal = (basket) => basket.reduce((acc, curr) => acc + curr.price, 0);
 	return (
 		<SubtotalDiv className="subtotal">
